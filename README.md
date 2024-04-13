@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<body>
+# Cipher X
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+A simple encyption method that you can use to write messages only you and your friends can read!
 
-</body>
-</html>
+## encrypt.py
+
+Contains all functions to encrypt a message
+
+### plugbaord
+Input: "String (No numbers, no special characters)", "lk, aj, lx" (first letter is letter in starting text, second letter is the final letter after plugboard)
