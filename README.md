@@ -6,17 +6,17 @@ A simple encryption method that you can use to write messages only you and your 
 
 Contains all functions to encrypt a message
 
-### plugboard
+## plugboard
 
 Swaps one character with another character
 Input: "String", "lk, aj, lx" (first letter is letter in starting text, second letter is the final letter after plugboard)
 
-### horizontalRotor
+## horizontalRotor
 
 Rotates all characters a set amount in the list
 Input: "String", "integer" (positive for rotate right, negative for rotate left)
 
-### verticalRotor
+## verticalRotor
 
 Adds or subtracts from the decimal ASCII values of each character
 Input: "String", "integer" (positive to add, negative to subtracts)
