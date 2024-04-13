@@ -7,9 +7,10 @@
 from encrypt import *
 
 # input
+print("Please enter a string of text to start (Letters, integers, and spaces only)")
 originalText = input("> ")
 
-# convert input to string
+# convert input to list
 text = []
 for i in range(len(originalText)):
     text.append(originalText[i])
@@ -26,7 +27,9 @@ text = "".join(text)
 print(text)
 
 """
-Currently Encrypting: {Original Text}
+Original Text: {Original Text}
+Encrypted Text: {Encrypted Text}
+
 Current Plugs: {Plugs}
 Current Horizontal Rotation: {Horizontal Rotation}
 Current Vertical Rotation: {Vertical Rotation}
