@@ -1,12 +1,9 @@
-# get input
-# turn input all lower case
-# encrypt
-# print encrypted message and key
-
 # imports
 from encrypt import *
+from functions import *
 
-# input
+# startup and input
+clearConsole()
 print("Please enter a string of text to start (Letters, integers, and spaces only)")
 originalText = input("> ")
 
@@ -22,19 +19,73 @@ for i in range(len(text)):
     else:
         text[i] = text[i].lower()
 text = "".join(text)
+clearConsole()
 
-# test output
-print(text)
+# variable init
+encryptedText = text
+plugs = "none"
+horizontalRotation = "none"
+verticalRotation = "none"
+encrypting = True
+key = ""
 
-"""
-Original Text: {Original Text}
-Encrypted Text: {Encrypted Text}
+# input loop
+while encrypting:
+    display(originalText, encryptedText, plugs, horizontalRotation, verticalRotation)
+    userInput = input("> ").lower()
 
-Current Plugs: {Plugs}
-Current Horizontal Rotation: {Horizontal Rotation}
-Current Vertical Rotation: {Vertical Rotation}
-
-Type "help" for commands
-
->
-"""
+    # input logic
+    # detect help command
+    if userInput == "help":
+        commands()
+    # detect end command
+    elif userInput == "end":
+        clearConsole()
+        print(f"Original Text: {originalText}\nEncrypted Text: {encryptedText.upper()}\nKey: {key.upper()}")
+        encrypting = False
+    # detect plug command
+    elif "plug" in userInput:
+        userInput = userInput.replace("plug ", "")
+        if "_" in userInput:
+            clearConsole()
+            print("Can't replace that character, try again\n")
+            pass
+        else:
+            encryptedText = plugboard(encryptedText, userInput)
+            key += "#" + userInput.replace(" ", "")
+            clearConsole()
+        continue
+    # detect hrot command
+    elif "hrot" in userInput:
+        userInput = userInput.replace("hrot ", "")
+        if int(userInput) > len(encryptedText) - 1:
+            clearConsole()
+            print("Redundant input, try again\n")
+            pass
+        elif int(userInput) < -len(encryptedText) + 1:
+            clearConsole()
+            print("Redundant input, try again\n")
+            pass
+        else:
+            encryptedText = horizontalRotor(encryptedText, userInput)
+            key += "$" + userInput
+            clearConsole()
+        continue
+    # detect vrot command
+    elif "vrot" in userInput:
+        userInput = userInput.replace("vrot ", "")
+        if int(userInput) > 25:
+            clearConsole()
+            print("Bad input, try again\n")
+            pass
+        elif int(userInput) < -25:
+            clearConsole()
+            print("Bad input, try again\n")
+            pass
+        else:
+            encryptedText = verticalRotor(encryptedText, userInput)
+            key += "%" + userInput
+            clearConsole()
+        continue
+    else:
+        print("Command not recognized")

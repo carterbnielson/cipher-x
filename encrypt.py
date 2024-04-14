@@ -2,7 +2,7 @@
 def plugboard(originalText, plugLetters):
     # plugboard character list
     pl = []
-    plugLetters = plugLetters.replace(", ", "")
+    plugLetters = plugLetters.replace(" ", "")
     for i in range(len(plugLetters)):
         pl.append(plugLetters[i])
     # original text character list
